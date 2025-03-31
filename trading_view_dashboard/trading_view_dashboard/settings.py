@@ -23,7 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-hptvt)5)#9%pf)xlia4!65env93jv+-v$@a*((+saq4%up0m_k'
 
-# Update ALLOWED_HOSTS for production
+# Ensure DEBUG is set to False for production
+DEBUG = False
+
+# Update ALLOWED_HOSTS to include production domains
 ALLOWED_HOSTS = [
     '.vercel.app',
     '.now.sh',
@@ -33,20 +36,13 @@ ALLOWED_HOSTS = [
 ]
 
 
-# Ensure DEBUG is False for production
-DEBUG = True
+# Ensure STATICFILES_DIRS includes the static directory
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-# Add database configuration for production (if needed)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD'),
-#         'HOST': os.getenv('DB_HOST'),
-#         'PORT': os.getenv('DB_PORT'),
-#     }
-# }
+# Add WhiteNoise configuration for serving static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Application definition
@@ -140,13 +136,3 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-# Ensure STATICFILES_DIRS includes the static directory
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    # BASE_DIR / 'static',
-]
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
