@@ -24,7 +24,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "trading_view_dashboard.asgi.application"
+            "dest": "trading_view_dashboard/wsgi.py"
         }
     ]
 }
