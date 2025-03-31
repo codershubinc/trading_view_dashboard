@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,10 +23,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-hptvt)5)#9%pf)xlia4!65env93jv+-v$@a*((+saq4%up0m_k'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Update ALLOWED_HOSTS for production
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
-ALLOWED_HOSTS = []
+# Static files settings for production
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Ensure DEBUG is False for production
+DEBUG = False
+
+# Add database configuration for production (if needed)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME'),
+#         'USER': os.getenv('DB_USER'),
+#         'PASSWORD': os.getenv('DB_PASSWORD'),
+#         'HOST': os.getenv('DB_HOST'),
+#         'PORT': os.getenv('DB_PORT'),
+#     }
+# }
 
 
 # Application definition
