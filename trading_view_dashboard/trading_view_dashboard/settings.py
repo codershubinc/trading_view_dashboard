@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-hptvt)5)#9%pf)xlia4!65env93jv+-v$@a*((+saq4%up0m_k
 ALLOWED_HOSTS = [
     '.vercel.app',
     '.now.sh',
-    '.codershubinc.tech'
+    '.codershubinc.tech',
+    'localhost',
+    '127.0.0.1',
 ]
 
 # Static files settings for production
@@ -35,7 +37,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Ensure DEBUG is False for production
-DEBUG = False
+DEBUG = True
 
 # Add database configuration for production (if needed)
 # DATABASES = {
@@ -78,7 +80,7 @@ ROOT_URLCONF = 'trading_view_dashboard.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,6 +143,9 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

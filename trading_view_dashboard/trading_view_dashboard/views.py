@@ -1,8 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def home(request):
-    return HttpResponse("<h1>Welcome to trading_view_dashboard Project: <br/> Home page</h1>")
+    return render(request, 'index.html')
 
 
 def about(request):
