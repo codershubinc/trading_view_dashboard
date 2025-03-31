@@ -11,6 +11,11 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'trading_view_dashboard.settings')
+os.environ.setdefault(
+    'DJANGO_SETTINGS_MODULE',
+    'trading_view_dashboard.settings'
+)
 
 application = get_wsgi_application()
+
+app = application
