@@ -143,7 +143,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Ensure STATICFILES_DIRS includes the static directory
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    BASE_DIR / 'static',
+    # BASE_DIR / 'static',
 ]
 
 # Default primary key field type
