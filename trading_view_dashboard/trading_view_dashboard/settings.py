@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
 
 # Static files settings for production
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Ensure DEBUG is False for production
 DEBUG = True
