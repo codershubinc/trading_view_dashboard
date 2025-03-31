@@ -3,5 +3,11 @@ body {
   background-color: #050404;
   margin: 0;
   padding: 0;
-  color: rgb(255, 255, 255);
+  color: rgb(146, 93, 93);
+}
+
+h1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
