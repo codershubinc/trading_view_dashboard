@@ -2,22 +2,29 @@
     "version": 2,
     "builds": [
         {
-            "src": "vercel_app.py",
-            "use": "@vercel/python"
+            "src": "trading_view_dashboard/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.9"
+            }
         },
         {
-            "src": "staticfiles/**",
-            "use": "@vercel/static"
+            "src": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "staticfiles"
+            }
         }
     ],
     "routes": [
         {
             "src": "/static/(.*)",
-            "dest": "/staticfiles/$1"
+            "dest": "/static/$1"
         },
         {
             "src": "/(.*)",
-            "dest": "vercel_app.py"
+            "dest": "trading_view_dashboard/wsgi.py"
         }
     ]
 }
