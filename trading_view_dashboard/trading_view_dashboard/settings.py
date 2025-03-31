@@ -32,11 +32,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-# # Static files settings
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 # Ensure DEBUG is False for production
 DEBUG = True

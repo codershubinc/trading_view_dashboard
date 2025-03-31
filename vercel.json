@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "trading_view_dashboard/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "trading_view_dashboard/static/(.*)",
+            "dest": "trading_view_dashboard/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "trading_view_dashboard/wsgi.py"
+        }
+    ]
+}
