@@ -144,8 +144,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     BASE_DIR / 'static',
-    '/var/www/.codershubinc.tech/static/',
-    '/home/user/static/',
 ]
 
 # Default primary key field type
