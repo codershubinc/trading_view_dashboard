@@ -24,7 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hptvt)5)#9%pf)xlia4!65env93jv+-v$@a*((+saq4%up0m_k'
 
 # Update ALLOWED_HOSTS for production
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    '.now.sh',
+    '.codershubinc.tech'
+]
 
 # Static files settings for production
 STATIC_URL = '/static/'
