@@ -10,7 +10,7 @@ def home(request):
 
 def about(request):
     data = fetch_data_from_api(
-        'https://openapi.codershubinc.tech/v0.1/random_user')
+        'https://eodhd.com/api/eod/AAPL.US?period=d&api_token=67ec1131f143a6.81114507&fmt=json&from=2025-01-05&to2025-03-01')
     return JsonResponse(data, safe=False)
 
 
