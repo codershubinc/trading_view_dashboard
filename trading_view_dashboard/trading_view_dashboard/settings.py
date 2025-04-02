@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hptvt)5)#9%pf)xlia4!65env93jv+-v$@a*((+saq4%up0m_k'
 
 # Ensure DEBUG is set to False for production
-DEBUG = False
+DEBUG = True
 
 # Update ALLOWED_HOSTS to include production domains
 ALLOWED_HOSTS = [
