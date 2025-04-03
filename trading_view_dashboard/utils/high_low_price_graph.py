@@ -24,8 +24,7 @@ def high_low_price_graph(symbol: str):
     high_prices.reverse()
     low_prices.reverse()
 
-    # Limit the data to the most recent 20 or 30 days
-    max_days = 30
+    max_days = 20
     dates = dates[:max_days]
     high_prices = high_prices[:max_days]
     low_prices = low_prices[:max_days]
