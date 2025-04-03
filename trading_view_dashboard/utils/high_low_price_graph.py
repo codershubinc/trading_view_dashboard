@@ -42,7 +42,7 @@ def high_low_price_graph(
         y_label="Price",
         color='green',
         marker='^',
-        linestyle='-'
+        linestyle='--'
     )
 
     return plot_image
