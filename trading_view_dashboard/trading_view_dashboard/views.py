@@ -1,16 +1,18 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from utils.fetch_util import fetch_data_from_api
-from utils.matplotlib import plot_to_base64, plot_stock_high_prices
+from utils.matplotlib_util import plot
+from utils.company_info import get_company_info
+from utils.high_low_price_graph import high_low_price_graph
 
 
 def home(request):
     return render(request, 'index.html')
 
 
-def about(request):
+def about(request, sym):
     data = fetch_data_from_api(
-        'https://eodhd.com/api/eod/AAPL.US?period=d&api_token=demo&format=json&from=2025-01-05&to2025-03-01')
+        'https://raw.githubusercontent.com/codershubinc/trade_data/refs/heads/main/high_low/{sym}.json')
     return JsonResponse(data, safe=False)
 
 
@@ -22,6 +24,15 @@ def contact(request):
     return HttpResponse(f"<img src='{avatar_url}' alt='Contact' />")
 
 
-def plot_template_view(request):
-    image_data = plot_stock_high_prices()
-    return render(request, 'plot/plot.html', {'image': image_data})
+def plot_template_view(request, symbol):
+
+    # Fetch company information (using demo_data for now)
+    company_info = get_company_info(symbol)
+
+    plot_image = high_low_price_graph(symbol)
+
+    return render(request, "plot/plot.html", {
+        "plot_image": plot_image,
+        "symbol": symbol,
+        "company_info": company_info,
+    })

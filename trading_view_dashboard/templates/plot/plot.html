@@ -1,10 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>Matplotlib Plot in Django</title>
+    <link rel="stylesheet" href="{% static 'css/plot.css' %}" />
   </head>
   <body>
-    <h1>Matplotlib Chart in Django</h1>
-    <img src="{{ image }}" alt="Matplotlib Chart" style="height: auto" />
+    <div class="company-info">
+      <h2>{{ company_info.Name }}</h2>
+      <p><strong>Symbol:</strong> {{ company_info.Symbol }}</p>
+      <p><strong>Sector:</strong> {{ company_info.Sector }}</p>
+      <p><strong>Industry:</strong> {{ company_info.Industry }}</p>
+      <p><strong>Description:</strong> {{ company_info.Description }}</p>
+      <p>
+        <strong>Market Capitalization:</strong>
+        {{company_info.MarketCapitalization }}
+      </p>
+      <p><strong>52 Week High:</strong> {{ company_info.52WeekHigh }}</p>
+      <p><strong>52 Week Low:</strong> {{ company_info.52WeekLow }}</p>
+    </div>
+
+    <div id="plot-img-div">
+      <img src="{{ plot_image }}" alt="Matplotlib Chart" id="plot-graph" />
+    </div>
   </body>
 </html>
