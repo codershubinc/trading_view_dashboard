@@ -33,13 +33,20 @@ def plot_template_view(request, symbol):
     # Fetch company information (using demo_data for now)
     company_info = get_company_info(symbol)
 
-    plot_image = high_low_price_graph(
+    high_price_plot_image = high_low_price_graph(
         symbol,
-        days
+        days,
+        'high'
+    )
+    low_price_plot_image = high_low_price_graph(
+        symbol,
+        days,
+        'low'
     )
 
     return render(request, "plot/plot.html", {
-        "plot_image": plot_image,
+        "high_price_plot_image": high_price_plot_image,
+        'low_price_plot_image': low_price_plot_image,
         "symbol": symbol,
         "company_info": company_info,
     })

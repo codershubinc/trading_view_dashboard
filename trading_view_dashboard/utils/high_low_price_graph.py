@@ -5,6 +5,7 @@ from utils.fetch_util import fetch_data_from_api
 def high_low_price_graph(
         symbol: str,
         max_days: int = 20,
+        price: str = 'high'
 ):
 
     # Fetch data from the API
@@ -35,7 +36,7 @@ def high_low_price_graph(
     # Generate the plot
     plot_image = plot(
         x_axis_data=dates,
-        y_axis_data=high_prices,
+        y_axis_data=high_prices if price == 'high' else low_prices,
         title=f"High Prices for {symbol}",
         x_label="Date",
         y_label="Price",

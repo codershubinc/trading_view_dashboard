@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import io
 import base64
+import numpy as np
+from datetime import datetime
 
 
 def plot(
@@ -16,6 +18,16 @@ def plot(
 ):
     if x_axis_data is None or y_axis_data is None:
         raise ValueError("x_axis_data and y_axis_data cannot be None")
+
+    # Ensure x_axis_data and y_axis_data are cast to appropriate types
+    try:
+        x_axis_data = [float(x) if isinstance(x, str) and x.replace(
+            '.', '', 1).isdigit() else x for x in x_axis_data]
+        y_axis_data = [float(y) if isinstance(y, str) and y.replace(
+            '.', '', 1).isdigit() else y for y in y_axis_data]
+    except ValueError:
+        raise ValueError(
+            "Ensure x_axis_data and y_axis_data contain numeric or datetime-compatible values.")
 
     # Create figure and axis
     fig, ax = plt.subplots(figsize=(16, 9))
