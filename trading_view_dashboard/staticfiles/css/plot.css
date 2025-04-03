@@ -1,0 +1,38 @@
+#plot-graph {
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  margin: auto, 2px;
+  width: 1000px;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+#plot-img-div {
+  text-align: center;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-info {
+  margin: 20px;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.company-info h2 {
+  color: #ffcc00;
+}
+
+p > strong {
+  color: #ddd6d6;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}

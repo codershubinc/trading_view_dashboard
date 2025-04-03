@@ -26,4 +26,6 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     re_path(r'^plot/(?P<symbol>\w+)/$',
             views.plot_template_view, name='plot_template_view'),
+    re_path(r'^plot/(?P<symbol>\w+)/(?P<days>\w+)',
+            views.plot_template_view, name='plot_template_view'),
 ]

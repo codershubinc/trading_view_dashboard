@@ -4,10 +4,13 @@ from utils.fetch_util import fetch_data_from_api
 from utils.matplotlib_util import plot
 from utils.company_info import get_company_info
 from utils.high_low_price_graph import high_low_price_graph
+from constants.shares_symbols import symbols
 
 
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'main.html', {
+        'symbols': symbols
+    })
 
 
 def about(request, sym):
@@ -25,11 +28,15 @@ def contact(request):
 
 
 def plot_template_view(request, symbol):
-
+    days = request.GET.get('days', 30)
+    print(f"Symbol: {symbol}, Days: {days}")
     # Fetch company information (using demo_data for now)
     company_info = get_company_info(symbol)
 
-    plot_image = high_low_price_graph(symbol)
+    plot_image = high_low_price_graph(
+        symbol,
+        days
+    )
 
     return render(request, "plot/plot.html", {
         "plot_image": plot_image,

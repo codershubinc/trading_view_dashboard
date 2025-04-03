@@ -1,13 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
   font-family: Arial, sans-serif;
   background-color: #050404;
   margin: 0;
   padding: 0;
-  color: rgb(146, 93, 93);
+  color: rgb(255, 255, 255);
 }
 
 h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }

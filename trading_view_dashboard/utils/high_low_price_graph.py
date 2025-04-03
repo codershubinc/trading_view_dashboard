@@ -2,7 +2,10 @@ from utils.matplotlib_util import plot
 from utils.fetch_util import fetch_data_from_api
 
 
-def high_low_price_graph(symbol: str):
+def high_low_price_graph(
+        symbol: str,
+        max_days: int = 20,
+):
 
     # Fetch data from the API
     data = fetch_data_from_api(
@@ -19,7 +22,7 @@ def high_low_price_graph(symbol: str):
         dates.append(date)
         high_prices.append(float(prices['2. high']))
         low_prices.append(float(prices['3. low']))
-    # Reverse the lists to have the most recent date first
+
     dates.reverse()
     high_prices.reverse()
     low_prices.reverse()

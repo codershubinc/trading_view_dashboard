@@ -1,0 +1,51 @@
+{% load static  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Trades</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body
+class='roboto'
+>
+
+<h1>Select a Stock Symbol</h1>
+
+<form
+  action=""
+  method="get"
+  onsubmit="handleSubmit(event)"
+  id="symbol-form"
+  class='roboto'
+>
+  <label 
+  for="symbol"
+    class="label"
+  >Choose a symbol:</label>
+  <select id="symbol"  name="symbol" class="select"  >
+    {% for symbol in symbols %}
+    <option
+     value="{{ symbol }}"
+     id='symbol-option'
+     class='roboto'
+     >
+     {{ symbol }}
+    </option>
+    {% endfor %}
+  </select>
+  <button 
+  type="submit"
+    id="submit-button"
+  >
+  View Plot
+</button>
+</form> 
+
+<script src= {% static "/js/push_to_route.js" %}></script>
+    
+</body>
+</html>
