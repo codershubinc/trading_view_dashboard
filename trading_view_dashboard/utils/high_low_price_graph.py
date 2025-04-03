@@ -37,7 +37,7 @@ def high_low_price_graph(
     plot_image = plot(
         x_axis_data=dates,
         y_axis_data=high_prices if price == 'high' else low_prices,
-        title=f"High Prices for {symbol}",
+        title=f"High Prices for {symbol}" if price == 'high' else f"Low Prices for {symbol}",
         x_label="Date",
         y_label="Price",
         color='green',
