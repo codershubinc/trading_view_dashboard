@@ -14,7 +14,7 @@ def plot(
         y_label: str = 'Y Axis',
         title: str = 'Sample Plot',
         grid: bool = True,
-        linestyle: str = '-',
+        linestyle: str = 'x',
 ):
     if x_axis_data is None or y_axis_data is None:
         raise ValueError("x_axis_data and y_axis_data cannot be None")
