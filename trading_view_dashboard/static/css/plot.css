@@ -2,7 +2,12 @@
   border: 2px solid #ffffff;
   border-radius: 10px;
   margin: auto, 2px;
-  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .plot-graph {
+    width: 95vw;
+  }
 }
 
 body {
@@ -18,6 +23,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#plot-img-div img {
+  max-width: 100%;
+  height: auto;
 }
 
 .company-info {
