@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 import io
 import base64
-import numpy as np
-from datetime import datetime
 
 
 def plot(
@@ -18,16 +16,6 @@ def plot(
 ):
     if x_axis_data is None or y_axis_data is None:
         raise ValueError("x_axis_data and y_axis_data cannot be None")
-
-    # Ensure x_axis_data and y_axis_data are cast to appropriate types
-    try:
-        x_axis_data = [float(x) if isinstance(x, str) and x.replace(
-            '.', '', 1).isdigit() else x for x in x_axis_data]
-        y_axis_data = [float(y) if isinstance(y, str) and y.replace(
-            '.', '', 1).isdigit() else y for y in y_axis_data]
-    except ValueError:
-        raise ValueError(
-            "Ensure x_axis_data and y_axis_data contain numeric or datetime-compatible values.")
 
     # Create figure and axis
     fig, ax = plt.subplots(figsize=(16, 9))
@@ -61,8 +49,53 @@ def plot(
     buffer = io.BytesIO()
     plt.savefig(buffer, format='png')
     plt.close(fig)
+    plt.legend()
     buffer.seek(0)
 
     # Encode image in base64
     encoded_image = base64.b64encode(buffer.getvalue()).decode()
+    return f"data:image/png;base64,{encoded_image}"
+
+
+def line_plot_both(
+        title='Line Chart',
+        y_label='Y Axis',
+        y_2_label='Y 2 Axis',
+        x_data=None,
+        y_data=None,
+        y_2_data=None,
+):
+
+    fig, ax = plt.subplots(figsize=(16, 9))
+    ax.plot(
+        x_data,
+        y_data,
+        label=y_label or 'X Axis',
+        color='green',
+        linestyle='--',
+        marker='x'
+    )
+    ax.plot(
+        x_data,
+        y_2_data,
+        label=y_2_label or 'Y Axis',
+        color='red',
+        linestyle='--',
+        marker='x'
+    )
+
+    # Add legend and labels
+    ax.legend()
+    ax.set_title(title)
+
+    # Save plot to BytesIO
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    plt.close(fig)
+    buffer.seek(0)
+
+    # Encode image in base64
+    encoded_image = base64.b64encode(
+        buffer.getvalue()).decode('utf-8', 'replace')
+
     return f"data:image/png;base64,{encoded_image}"

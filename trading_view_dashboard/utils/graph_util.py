@@ -1,13 +1,15 @@
-from utils.matplotlib_util import plot
+from utils.matplotlib_util import plot, line_plot_both
 from utils.fetch_util import fetch_data_from_api
 
 
 def high_low_price_graph(
         symbol: str,
-        max_days: int = 20,
+        max_days: int = 10,
         price: str = 'high'
 ):
 
+    if price == 'both':
+        return both(symbol, max_days)
     # Fetch data from the API
     data = fetch_data_from_api(
         f'https://raw.githubusercontent.com/codershubinc/trade_data/refs/heads/main/high_low/{symbol}.json')
@@ -19,6 +21,8 @@ def high_low_price_graph(
     dates = []
     high_prices = []
     low_prices = []
+
+    # appending the values of days high value and low value
     for date, prices in data['Time Series (Daily)'].items():
         dates.append(date)
         high_prices.append(float(prices['2. high']))
@@ -28,7 +32,7 @@ def high_low_price_graph(
     high_prices.reverse()
     low_prices.reverse()
 
-    max_days = 20
+    max_days = 10
     dates = dates[:max_days]
     high_prices = high_prices[:max_days]
     low_prices = low_prices[:max_days]
@@ -40,9 +44,52 @@ def high_low_price_graph(
         title=f"High Prices for {symbol}" if price == 'high' else f"Low Prices for {symbol}",
         x_label="Date",
         y_label="Price",
-        color='green',
+        color='green' if price == 'high' else 'red',
         marker='^',
         linestyle='--'
+    )
+
+    return plot_image
+
+
+def both(
+    symbol: str,
+        max_days: int = 10,
+):
+    # Fetch data from the API
+    data = fetch_data_from_api(
+        f'https://raw.githubusercontent.com/codershubinc/trade_data/refs/heads/main/high_low/{symbol}.json')
+
+    # Check if the data is empty
+    if not data or 'Time Series (Daily)' not in data:
+        return "No data available for the given symbol."
+    # Extract dates, high prices, and low prices
+    dates = []
+    high_prices = []
+    low_prices = []
+
+    # appending the values of days high value and low value
+    for date, prices in data['Time Series (Daily)'].items():
+        dates.append(date)
+        high_prices.append(float(prices['2. high']))
+        low_prices.append(float(prices['3. low']))
+
+    dates.reverse()
+    high_prices.reverse()
+    low_prices.reverse()
+
+    max_days = 10
+    dates = dates[:max_days]
+    high_prices = high_prices[:max_days]
+    low_prices = low_prices[:max_days]
+
+    plot_image = line_plot_both(
+        title=f"Days High and Low Prices for {symbol}",
+        x_data=dates,
+        y_data=high_prices,
+        y_2_data=low_prices,
+        y_2_label="Low Prices",
+        y_label="High Prices",
     )
 
     return plot_image

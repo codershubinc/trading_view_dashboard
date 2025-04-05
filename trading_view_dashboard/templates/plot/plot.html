@@ -20,21 +20,22 @@
       <p><strong>52 Week Low:</strong> {{ company_info.52WeekLow }}</p>
     </div>
 
+
     <div id="plot-img-div">
-      <h2>Graph of date v/s days high value of share</h2>
+      <h2>Graph of date v/s days {{ graph_type }} value of share</h2>
       <img
-        src="{{ high_price_plot_image }}"
-        alt="Matplotlib Chart"
-        id="plot-graph"
+        src="{{ plot_image }}"
+        alt="{{ graph_type|title }} Value Matplotlib Chart"
+        id="graph "
+        class="plot-graph"
       />
     </div>
-    <div id="plot-img-div">
-      <h2>Graph of date v/s days low value of share</h2>
-      <img
-        src="{{ low_price_plot_image }}"
-        alt="Matplotlib Chart"
-        id="plot-graph"
-      />
-    </div>
+
+    <button id="toggle-button" onclick="toggleGraph()">
+      Show {% if graph_type == 'high' %} low {% else %}high{% endif %} Value
+      Graph
+    </button>
+
+    <script src={%static '/js/toggleGraph.js'%}></script>
   </body>
 </html>

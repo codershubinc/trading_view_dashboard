@@ -20,3 +20,4 @@ sqlparse==0.5.3
 urllib3==2.3.0
 vercel==0.2.1
 whitenoise==6.9.0
+seaborn
