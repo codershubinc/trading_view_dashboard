@@ -62,7 +62,7 @@ def line_plot_both(
 
     # Create figure and axis with specified size
     fig, ax = plt.subplots(figsize=(20, 10))
-    # sns.set(rc={'figure.figsize': (20, 6)})
+
     # Create a line plot with two lines
     ax.plot(x_data, y_data, label=y_label or 'X Axis', color='blue')
     ax.plot(x_data, y_2_data, label=y_2_label or 'Y Axis', color='orange')

@@ -5,5 +5,4 @@ graph_types = [
     'day_close',
     'day_high_low',
     'ETF_profile',
-
 ]
