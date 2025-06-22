@@ -1,41 +1,40 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Matplotlib Plot in Django</title>
-    <link rel="stylesheet" href="{% static 'css/plot.css' %}" />
-  </head>
-  <body>
-    <div class="company-info">
-      <h2>{{ company_info.Name }}</h2>
-      <p><strong>Symbol:</strong> {{ company_info.Symbol }}</p>
-      <p><strong>Sector:</strong> {{ company_info.Sector }}</p>
-      <p><strong>Industry:</strong> {{ company_info.Industry }}</p>
-      <p><strong>Description:</strong> {{ company_info.Description }}</p>
-      <p>
-        <strong>Market Capitalization:</strong>
-        {{company_info.MarketCapitalization }} $
-      </p>
-      <p><strong>52 Week High:</strong> {{ company_info.52WeekHigh }} $</p>
-      <p><strong>52 Week Low:</strong> {{ company_info.52WeekLow }} $</p>
-    </div>
+
+<head>
+  <title>Matplotlib Plot in Django</title>
+  <link rel="stylesheet" href="{% static 'css/plot.css' %}" />
+  
+</head>
+
+<body>
+  <div class="company-info">
+    <h2> <span class="title">Name:</span> {{ company_info.Name }}</h2>
+    <p><strong class="title">Symbol:</strong> {{ company_info.Symbol }}</p>
+    <p><strong class="title">Sector:</strong> {{ company_info.Sector }}</p>
+    <p><strong class="title">Industry Type:</strong> {{ company_info.Industry }}</p>
+    <p><strong class="title">Description:</strong> {{ company_info.Description }}</p>
+    <p>
+      <strong class="title">Market Capitalization:</strong>
+      {{company_info.MarketCapitalization }} $
+    </p>
+    <p><strong class="title">52 Week High Value:</strong> {{ company_info.52WeekHigh }} $</p>
+    <p><strong class="title">52 Week Low Value:</strong> {{ company_info.52WeekLow }} $</p>
+  </div>
 
 
-    <div id="plot-img-div">
-      <h2>Graph of date v/s days {{ graph_type }} value of share</h2>
-      <img
-        src="{{ plot_image }}"
-        alt="{{ graph_type|title }} Value Matplotlib Chart"
-        id="graph "
-        class="plot-graph"
-      />
-    </div>
+  <div id="plot-img-div">
+    <h2>Graph of date v/s days {{ graph_type }} value of share</h2>
+    <img src="{{ plot_image }}" alt="{{ graph_type|title }} Value Matplotlib Chart" id="graph " class="plot-graph" />
+  </div>
 
-    <button id="toggle-button" onclick="toggleGraph()">
-      Show {% if graph_type == 'high' %} low {% else %}high{% endif %} Value
-      Graph
-    </button>
+  <button id="toggle-button" onclick="toggleGraph()">
+    Show {% if graph_type == 'high' %} low {% else %}high{% endif %} Value
+    Graph
+  </button>
 
-    <script src={%static '/js/toggleGraph.js'%}></script>
-  </body>
+  <script src={%static '/js/toggleGraph.js' %}></script>
+</body>
+
 </html>
