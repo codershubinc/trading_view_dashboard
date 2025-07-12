@@ -4,8 +4,9 @@ from utils.fetch_util import fetch_data_from_api
 def get_company_info(symbol: str):
     # Fetch data from the API
     data = fetch_data_from_api(
-        f'https://raw.githubusercontent.com/codershubinc/trade_data/refs/heads/main/overview/{symbol}.json')
-    return data
+        f'https://open-api-ts.vercel.app/v0.1/trade/{symbol}/overview')
+    # print(f"Fetched data for {symbol}: {data['data']}")
+    return data['data']
 
 
 demo_data = {

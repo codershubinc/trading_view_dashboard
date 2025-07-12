@@ -4,7 +4,7 @@ from utils.fetch_util import fetch_data_from_api
 def get_dividend_data(symbol: str) -> dict:
 
     fetched_data = fetch_data_from_api(
-        f'https://raw.githubusercontent.com/codershubinc/trade_data/refs/heads/main/dividend/{symbol}.json'
+        f'https://open-api-ts.vercel.app/v0.1/trade/{symbol}/highLowData'
     )
     if fetched_data is None:
         return demo_api_data
